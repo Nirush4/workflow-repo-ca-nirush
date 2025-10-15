@@ -8,8 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      TEST_USER_EMAIL: ${{secrets.TEST_EMAIL }}
-      TEST_USER_PASSWORD: ${{secrets.TEST_PASSWORD}}
+      TEST_EMAIL: ${{secrets.TEST_EMAIL }}
+      TEST_PASSWORD: ${{secrets.TEST_PASSWORD}}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
