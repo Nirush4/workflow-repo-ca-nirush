@@ -8,8 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      TEST_USER_EMAIL: ${{ secrets.TEST_EMAIL }}
-      TEST_USER_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+      TEST_USER_EMAIL: ${{secrets.TEST_EMAIL }}
+      TEST_USER_PASSWORD: ${{secrets.TEST_PASSWORD}}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,7 +20,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test --reporter=list
+        run: npx playwright test --verbose --reporter=list
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
