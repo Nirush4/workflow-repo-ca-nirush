@@ -30,8 +30,9 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run dev',
-    url: 'http://127.0.0.1:5500',
+    command: 'npm run start',
+    port: 5500,
+    timeout: 120 * 1000, // 120 seconds
     reuseExistingServer: !process.env.CI,
   },
 })

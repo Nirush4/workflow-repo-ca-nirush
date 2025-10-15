@@ -1,5 +1,5 @@
+/* eslint-disable no-undef */
 import { test, expect } from '@playwright/test'
-
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -12,9 +12,7 @@ test.describe('Login functionality', () => {
   test('User can successfully log in with valid credentials from environment variables', async ({
     page,
   }) => {
-    // eslint-disable-next-line no-undef
     const email = process.env.TEST_EMAIL
-    // eslint-disable-next-line no-undef
     const password = process.env.TEST_PASSWORD
 
     expect(email, 'Missing TEST_EMAIL env variable').toBeTruthy()
@@ -25,12 +23,14 @@ test.describe('Login functionality', () => {
       'input[type="password"], input[placeholder*="password" i]',
       password,
     )
+
     await page.click('button:has-text("Login")')
 
-    // Updated locator: try both button and link
-    const logoutLocator = page.locator(
-      'button:has-text("Logout"), a:has-text("Logout")',
-    )
+    await page.waitForURL((url) => !url.pathname.startsWith('/login'), {
+      timeout: 10000,
+    })
+
+    const logoutLocator = page.locator('button:has-text("Logout")')
     await expect(logoutLocator).toBeVisible({ timeout: 10000 })
 
     expect(page.url()).not.toContain('/login')
@@ -41,16 +41,12 @@ test.describe('Login functionality', () => {
   }) => {
     await page.fill(
       'input[type="email"], input[placeholder*="mail" i]',
-
       'invalid@test.com',
     )
-
     await page.fill(
       'input[type="password"], input[placeholder*="password" i]',
-
       'wrongpassword',
     )
-
     await page.click('button:has-text("Login")')
 
     await page.waitForTimeout(2000)
@@ -60,10 +56,10 @@ test.describe('Login functionality', () => {
     const pageContent = await page.textContent('body')
 
     const hasErrorIndicator =
-      pageContent.includes('Invalid') ||
-      pageContent.includes('incorrect') ||
-      pageContent.includes('failed') ||
-      pageContent.includes('error')
+      pageContent?.includes('Invalid') ||
+      pageContent?.includes('incorrect') ||
+      pageContent?.includes('failed') ||
+      pageContent?.includes('error')
 
     expect(hasErrorIndicator).toBeTruthy()
   })
