@@ -22,8 +22,8 @@ This project is a front-end web application for booking venues. It supports user
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/holidaze-venue-booking.git
-cd holidaze-venue-booking
+git clone https://github.com/Nirush4/workflow-repo-ca-nirush
+cd workflow-repo-ca-nirush
 ```
 
 ## 🧪 Testing Configuration
