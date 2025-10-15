@@ -26,7 +26,7 @@ git clone https://github.com/Nirush4/workflow-repo-ca-nirush
 cd workflow-repo-ca-nirush
 ```
 
-## 🧪 Testing Configuration
+## 🧪Testing Configuration
 
 ### Vitest
 
