@@ -136,7 +136,7 @@ npx playwright show-report
 
 ![Vitest](image.png)
 ![E2E Test](image-1.png)
-![![E2E UI Test]](image-2.png)
+![![E2E UI Test]](image-4.png)
 ![playwright-reprt](image-3.png)
 
 ## Contact 📬
